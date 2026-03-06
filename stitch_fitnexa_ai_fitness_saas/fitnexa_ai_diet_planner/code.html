@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+
+<html class="dark"><head>
+<meta charset="utf-8"/>
+<title>FitNexa AI Diet Planner</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#38ff14",
+            "background-light": "#f6f8f5",
+            "background-dark": "#0a0a0a",
+          },
+          fontFamily: {
+            "display": ["Space Grotesk", "Noto Sans", "sans-serif"]
+          },
+          borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+        },
+      },
+    }
+  </script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+    body { font-family: "Space Grotesk", "Noto Sans", sans-serif; }
+    .glass { background: rgba(56, 255, 20, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(56, 255, 20, 0.1); }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display min-h-screen flex">
+<!-- Left Sidebar -->
+<aside class="w-64 flex-shrink-0 border-r border-primary/10 flex flex-col h-screen sticky top-0 bg-background-light dark:bg-background-dark">
+<div class="p-6">
+<div class="flex items-center gap-3 mb-8">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="FitNexa AI User Avatar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCHCM_6Zrwdjo86HZiFzIBRMEy7Njl2ly8DfRzyxU6EbTsNheA7pCamIBipwdlkefvtj1pIg-dxtCrMP-2GWAasSqWPJBbK8pPELL9Z_qo5dkGJ_NBp7CihqgIKH8Wm4_vlFIBnmaP6VALgmuFgvPnLSitzQPzak04y4DF3I1_GqsMWdGAdPMMgaRSIedFCUEbmb3SmXZylxgO98-elpy6WoGKigmwxmcxCDTUTldlHsYr3cZhobwjcXIyp0Pa2CDjdQn_pAPho_p8');"></div>
+<div class="flex flex-col">
+<h1 class="text-slate-900 dark:text-slate-100 text-base font-medium leading-normal">FitNexa AI</h1>
+<p class="text-primary text-sm font-normal leading-normal">Pro Member</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-slate-500 dark:text-slate-400">home</span>
+<span class="text-slate-700 dark:text-slate-300 text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/20 text-primary" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="text-primary text-sm font-medium">Diet Planner</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-slate-500 dark:text-slate-400">show_chart</span>
+<span class="text-slate-700 dark:text-slate-300 text-sm font-medium">Workouts</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-slate-500 dark:text-slate-400">trending_up</span>
+<span class="text-slate-700 dark:text-slate-300 text-sm font-medium">Progress</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-slate-500 dark:text-slate-400">settings</span>
+<span class="text-slate-700 dark:text-slate-300 text-sm font-medium">Settings</span>
+</a>
+</nav>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 overflow-y-auto p-8">
+<div class="max-w-6xl mx-auto space-y-8">
+<!-- Top Section -->
+<div class="flex items-center justify-between">
+<div>
+<h1 class="text-4xl font-black leading-tight tracking-tight">AI Diet Planner 🥗</h1>
+<p class="text-primary text-base font-normal mt-1">Today</p>
+</div>
+<button class="bg-primary hover:bg-primary/80 text-background-dark px-6 py-2 rounded-lg font-bold shadow-[0_0_15px_rgba(56,255,20,0.5)] transition-all">
+          Generate AI Meal Plan
+        </button>
+</div>
+<!-- Top Stats Row -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+<div class="glass rounded-xl p-6">
+<p class="text-slate-400 text-sm font-medium mb-2">Calories</p>
+<p class="text-2xl font-bold">1,840 <span class="text-sm font-normal text-slate-500">/ 2,200 kcal</span></p>
+<div class="w-full bg-slate-800 rounded-full h-1.5 mt-4">
+<div class="bg-primary h-1.5 rounded-full" style="width: 83%"></div>
+</div>
+</div>
+<div class="glass rounded-xl p-6">
+<p class="text-slate-400 text-sm font-medium mb-2">Protein</p>
+<p class="text-2xl font-bold">142g <span class="text-sm font-normal text-slate-500">/ 160g</span></p>
+<div class="w-full bg-slate-800 rounded-full h-1.5 mt-4">
+<div class="bg-primary h-1.5 rounded-full" style="width: 88%"></div>
+</div>
+</div>
+<div class="glass rounded-xl p-6">
+<p class="text-slate-400 text-sm font-medium mb-2">Carbs</p>
+<p class="text-2xl font-bold">180g <span class="text-sm font-normal text-slate-500">/ 200g</span></p>
+<div class="w-full bg-slate-800 rounded-full h-1.5 mt-4">
+<div class="bg-primary h-1.5 rounded-full" style="width: 90%"></div>
+</div>
+</div>
+<div class="glass rounded-xl p-6">
+<p class="text-slate-400 text-sm font-medium mb-2">Fat</p>
+<p class="text-2xl font-bold">62g <span class="text-sm font-normal text-slate-500">/ 70g</span></p>
+<div class="w-full bg-slate-800 rounded-full h-1.5 mt-4">
+<div class="bg-primary h-1.5 rounded-full" style="width: 88%"></div>
+</div>
+</div>
+</div>
+<!-- Two-Column Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Column (Meals) -->
+<div class="lg:col-span-7 space-y-4">
+<h2 class="text-2xl font-bold mb-4">Today's Meal Plan</h2>
+<div class="glass rounded-xl p-4 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-16" data-alt="Breakfast Meal Image" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCofEW8XsJq2bAVnEXzB8Z_SK2r3kfEpku3I6FXpWv9eNKeg_EtyU8trr4RlxqxW8W5qiznY4pbrdtXjwJ6bV8JZGPXY1QfUJfmCc5EjdOnH5jI8HWtJci12xD8M20fZo7_O6BdltptsfSxongDZBO7Zog8q6TyssO5HCc228ez1avkHcGKG6m-5_fxWWxXnzgHbeIkoFuJhhuCLQHHgC4jUU33kV8TKqczUb4p0SDaYbxQ3yCq1g91TYLguLJa0Wr3uTVth6r-zus');"></div>
+<div>
+<p class="font-medium">Breakfast</p>
+<p class="text-primary text-sm">High Protein</p>
+<p class="text-slate-400 text-xs mt-1">450 kcal • 30g P • 45g C • 15g F</p>
+</div>
+</div>
+<span class="text-primary font-medium flex items-center gap-1">Logged <span class="material-symbols-outlined text-sm">check</span></span>
+</div>
+<div class="glass rounded-xl p-4 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-16" data-alt="Lunch Meal Image" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBrfWUGbjfGGwxatWxvGkU6pzsS12D2SzAvvTEGXHlG4AlLsPJ0yBeT8wfkw01k52IZpYbvyf-IA4RMRuIn0axBg7Xmgzu-T8UmBhXK4UakFY0qsSYw_kwG2wsy1bCMbeKrRJOo9RvoEjl0_ybCiOPehssltYBNAQcGMdm3d8kqIJ2a8nv_WXCJK4DINYEqxE0o2ccX0XDkMZ_TpuHKRmyIX72g5pABwpkbPl4QuBTV-NgbzYnjbAxw72OHCLR3oQXgye1Eh0cwdg8');"></div>
+<div>
+<p class="font-medium">Lunch</p>
+<p class="text-primary text-sm">Balanced Bowl</p>
+<p class="text-slate-400 text-xs mt-1">650 kcal • 45g P • 60g C • 20g F</p>
+</div>
+</div>
+<button class="px-4 py-1.5 border border-primary text-primary rounded-lg text-sm hover:bg-primary/10 transition-colors">Log Meal</button>
+</div>
+<div class="glass rounded-xl p-4 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-16" data-alt="Snack Image" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAG84AVdPc0hkjo6x-MDckJbzotkk2k4uMwH4nmRM-us3nfNwNMpRk0rlniaT3cwd83_K-z8J0TpVWU5Rq-GljImjE1C50euC1tmvyb0aPMkBjVbihlPpQOAWje5sQYAKs8x7cLfmerWtMp3LixW8emfubEtx7l0RSNUSRaqy6K9Dc3rhbiLo5RtDpDKcjgHm5eFgZBy9WaoZlFaDim5FtTNxNpn_CHYT6a073SSRrbZiZ55PZqtyLwkTplCGJwX4SrSXUWBItF3-s');"></div>
+<div>
+<p class="font-medium">Snack</p>
+<p class="text-primary text-sm">Pre-Workout</p>
+<p class="text-slate-400 text-xs mt-1">200 kcal • 15g P • 25g C • 5g F</p>
+</div>
+</div>
+<button class="px-4 py-1.5 border border-primary text-primary rounded-lg text-sm hover:bg-primary/10 transition-colors">Log Meal</button>
+</div>
+<div class="glass rounded-xl p-4 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-16" data-alt="Dinner Meal Image" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDn5E5ga0NozoQ2ut1CuwYFSbWihlJwOKbl_NqO9a9E2H0LiHlSZu_QkRTjTO96ES8ceHbTtDxiWhLSINHdS4pA-Mlc4EGJNSL9lao-Q3NsG17UzCbRm-J8xWoWn-VhSSJR6ul-TKZ1zaVkdnCucfLAE-COAXthkd4tGWTi3tzTPSQT3m9xiT5LH30b4_K6isFD509HuvJtX4PKO2wgK3g58NA2r6aprm2Kw16_a3Wo-EsL9AfrIBHl-v90cpzgiS8lMrDBUgy5Q-U');"></div>
+<div>
+<p class="font-medium">Dinner</p>
+<p class="text-primary text-sm">Low Carb</p>
+<p class="text-slate-400 text-xs mt-1">540 kcal • 52g P • 50g C • 22g F</p>
+</div>
+</div>
+<button class="px-4 py-1.5 border border-primary text-primary rounded-lg text-sm hover:bg-primary/10 transition-colors">Log Meal</button>
+</div>
+<button class="w-full mt-4 py-3 border border-dashed border-primary text-primary rounded-xl font-medium hover:bg-primary/5 transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">add</span> Add Custom Food
+          </button>
+</div>
+<!-- Right Column (Insights) -->
+<div class="lg:col-span-5 space-y-6">
+<!-- Macro Breakdown -->
+<div class="glass rounded-xl p-6">
+<h3 class="font-bold mb-4">Macro Breakdown</h3>
+<div class="flex items-center gap-6">
+<div class="size-32 rounded-full border-8 border-slate-800 border-r-primary border-t-primary rotate-45 flex items-center justify-center relative">
+<div class="absolute inset-0 flex items-center justify-center -rotate-45">
+<span class="font-bold text-lg">83%</span>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex items-center gap-2"><div class="size-3 rounded-full bg-primary"></div><span class="text-sm">Protein (40%)</span></div>
+<div class="flex items-center gap-2"><div class="size-3 rounded-full bg-slate-600"></div><span class="text-sm">Carbs (35%)</span></div>
+<div class="flex items-center gap-2"><div class="size-3 rounded-full bg-slate-400"></div><span class="text-sm">Fat (25%)</span></div>
+</div>
+</div>
+</div>
+<!-- Water Intake -->
+<div class="glass rounded-xl p-6">
+<div class="flex justify-between items-center mb-4">
+<h3 class="font-bold">Water Intake</h3>
+<span class="text-primary font-medium">2.5L / 3L</span>
+</div>
+<div class="flex justify-between">
+<span class="material-symbols-outlined text-primary text-3xl">water_drop</span>
+<span class="material-symbols-outlined text-primary text-3xl">water_drop</span>
+<span class="material-symbols-outlined text-primary text-3xl">water_drop</span>
+<span class="material-symbols-outlined text-primary text-3xl">water_drop</span>
+<span class="material-symbols-outlined text-primary text-3xl">water_drop</span>
+<span class="material-symbols-outlined text-slate-700 text-3xl">water_drop</span>
+<span class="material-symbols-outlined text-slate-700 text-3xl">water_drop</span>
+<span class="material-symbols-outlined text-slate-700 text-3xl">water_drop</span>
+</div>
+</div>
+<!-- AI Tip -->
+<div class="glass rounded-xl p-6 relative overflow-hidden">
+<div class="absolute -right-4 -top-4 text-primary/10">
+<span class="material-symbols-outlined text-8xl">smart_toy</span>
+</div>
+<div class="flex items-start gap-3 relative z-10">
+<span class="material-symbols-outlined text-primary mt-1">lightbulb</span>
+<div>
+<h4 class="font-bold text-primary mb-1">AI Nutrition Tip</h4>
+<p class="text-sm text-slate-300 leading-relaxed">Consider adding a post-workout shake today. You're 18g short on your protein goal, and it will help with muscle recovery.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

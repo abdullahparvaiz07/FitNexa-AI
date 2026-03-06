@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FitNexa AI Posture Analyzer</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#39FF14",
+              "background-light": "#f6f8f5",
+              "background-dark": "#0a0a0a",
+              "panel": "rgba(255, 255, 255, 0.05)",
+              "panel-border": "rgba(57, 255, 20, 0.2)",
+            },
+            fontFamily: {
+              "display": ["Space Grotesk", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display min-h-screen">
+<div class="flex h-screen overflow-hidden">
+<!-- Sidebar -->
+<div class="w-64 bg-background-dark border-r border-panel-border flex flex-col justify-between p-4 flex-shrink-0">
+<div class="flex flex-col gap-6">
+<!-- User Profile -->
+<div class="flex items-center gap-3">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full w-10 h-10 border border-primary/30" data-alt="User profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDnklVS1EKOy75HfjfkHHZOeqof--hbdT-fzMge3XctebADo5eZNJNRiwqWsZ9IroMOSSIalwvwkyv6It-fQUCx-IkCPpiLR_Gf0eFUEB7Ph5A0blY-FffuV4AAPSCTA72Ag5KjO9i2RHjW5oT9Jf0ZkU_00hWkMshcir_h2U-Ih7m6nqKW-XqMzJBzlb5NfMwaCM4BMqLJuIxa2w5bzMTRzV3L18WaMaZxkLgR3gNbw2si0b7wGDnQ5-0yXqfwiaZrBDJez51-w2c");'></div>
+<div class="flex flex-col">
+<h1 class="text-slate-100 text-base font-medium leading-normal">FitNexa AI</h1>
+<p class="text-primary text-sm font-normal leading-normal">Pro Member</p>
+</div>
+</div>
+<!-- Navigation -->
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-panel transition-colors text-slate-300 hover:text-primary" href="#">
+<span class="material-symbols-outlined text-[24px]">home</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/20 border border-primary/30 text-primary" href="#">
+<span class="material-symbols-outlined text-[24px]">camera</span>
+<span class="text-sm font-medium">Posture Analyzer</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-panel transition-colors text-slate-300 hover:text-primary" href="#">
+<span class="material-symbols-outlined text-[24px]">monitoring</span>
+<span class="text-sm font-medium">Workouts</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-panel transition-colors text-slate-300 hover:text-primary" href="#">
+<span class="material-symbols-outlined text-[24px]">pie_chart</span>
+<span class="text-sm font-medium">Nutrition</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-panel transition-colors text-slate-300 hover:text-primary" href="#">
+<span class="material-symbols-outlined text-[24px]">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</nav>
+</div>
+<!-- Upgrade CTA -->
+<div class="p-4 bg-gradient-to-br from-primary/20 to-transparent rounded-xl border border-primary/20">
+<p class="text-sm text-slate-100 font-medium mb-2">Upgrade to Ultra</p>
+<p class="text-xs text-slate-400 mb-3">Get 3D posture mapping.</p>
+<button class="w-full py-1.5 bg-primary text-slate-900 rounded-lg text-xs font-bold hover:bg-primary/90 transition-colors">Upgrade Now</button>
+</div>
+</div>
+<!-- Main Content -->
+<main class="flex-1 overflow-y-auto p-8 flex flex-col gap-8">
+<!-- Header -->
+<header class="flex flex-col gap-2">
+<h1 class="text-slate-100 text-4xl font-black leading-tight tracking-tight">AI Posture Analyzer <span class="text-primary text-3xl">📸</span></h1>
+<p class="text-slate-400 text-base">Upload your workout photo or use live camera for real-time AI posture correction</p>
+</header>
+<div class="flex flex-col xl:flex-row gap-6">
+<!-- Left Column (55%) -->
+<div class="xl:w-[55%] flex flex-col gap-6">
+<!-- Image Analysis Area -->
+<div class="bg-panel backdrop-blur-md border border-panel-border rounded-xl p-4 flex flex-col gap-4">
+<div class="relative w-full aspect-video rounded-lg border-2 border-dashed border-primary/50 overflow-hidden bg-black/50 flex items-center justify-center group">
+<!-- Overlay Image with "AI Overlay" -->
+<div class="absolute inset-0 bg-cover bg-center opacity-70 mix-blend-luminosity" data-alt="Person performing a barbell squat" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBQ61jpVaUCHOK-U0maJSOIN5zr-bXf9lwm9FkXJlVL1ev-oj3RnyO3SFtXEEv7wb6OcTGlzDQIjlaRG9TAnqj3ATa6NG61pbSxUY28R_V91LJOOGriucgLSbAwKjYe9Sk9gJ3sH2gsenARC03gTe9SvK3YdLJyRd44g5B0ZegIRWhIPzBAES-t-MM-lWUqET1X2CP6-tIcU4hsmWMcljca30Nhwe_UyyGCJMeTPRFzihPcYxRpOy6bKqpDg7dkt3uU3Vle5p1lMUM");'></div>
+<!-- Fake AI Skeleton Overlay -->
+<svg class="absolute inset-0 w-full h-full text-primary opacity-80" preserveaspectratio="none" viewbox="0 0 100 100">
+<!-- Lines -->
+<line stroke="currentColor" stroke-width="0.5" x1="50" x2="50" y1="20" y2="40"></line>
+<line stroke="currentColor" stroke-width="0.5" x1="50" x2="40" y1="40" y2="60"></line>
+<line stroke="currentColor" stroke-width="0.5" x1="50" x2="60" y1="40" y2="60"></line>
+<line stroke="currentColor" stroke-width="0.5" x1="40" x2="45" y1="60" y2="85"></line>
+<line stroke="currentColor" stroke-width="0.5" x1="60" x2="55" y1="60" y2="85"></line>
+<!-- Joints -->
+<circle cx="50" cy="20" fill="currentColor" r="1.5"></circle>
+<circle cx="50" cy="40" fill="currentColor" r="1.5"></circle>
+<circle cx="40" cy="60" fill="currentColor" r="1.5"></circle>
+<circle cx="60" cy="60" fill="currentColor" r="1.5"></circle>
+<circle cx="45" cy="85" fill="currentColor" r="1.5"></circle>
+<circle cx="55" cy="85" fill="currentColor" r="1.5"></circle>
+</svg>
+<!-- Annotations -->
+<div class="absolute top-1/4 right-1/4 bg-red-500/80 backdrop-blur text-white text-xs px-2 py-1 rounded-md border border-red-400">
+                                ⚠️ Lower back curve detected
+                            </div>
+<div class="absolute bottom-1/4 left-1/4 bg-green-500/80 backdrop-blur text-white text-xs px-2 py-1 rounded-md border border-green-400">
+                                ✓ Knee alignment good
+                            </div>
+<div class="absolute top-1/3 left-1/4 bg-yellow-500/80 backdrop-blur text-white text-xs px-2 py-1 rounded-md border border-yellow-400">
+                                ⚠️ Shoulder tilt -8°
+                            </div>
+<!-- Hover state for upload -->
+<div class="absolute inset-0 bg-black/60 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer">
+<span class="material-symbols-outlined text-primary text-4xl mb-2">upload_file</span>
+<span class="text-primary font-medium">Drop new photo or click</span>
+</div>
+</div>
+<!-- Mode Toggles -->
+<div class="flex bg-black/40 p-1 rounded-lg border border-white/10">
+<button class="flex-1 py-2 text-sm font-medium rounded-md bg-primary/20 text-primary border border-primary/30 shadow-sm">Upload Photo</button>
+<button class="flex-1 py-2 text-sm font-medium rounded-md text-slate-400 hover:text-slate-200 hover:bg-white/5 transition-colors">Live Camera</button>
+<button class="flex-1 py-2 text-sm font-medium rounded-md text-slate-400 hover:text-slate-200 hover:bg-white/5 transition-colors">Video Analysis</button>
+</div>
+<!-- Progress Bar -->
+<div class="flex flex-col gap-2 pt-2">
+<div class="flex justify-between items-center text-sm">
+<span class="text-slate-300">AI Analysis Complete</span>
+<span class="text-primary font-bold">100%</span>
+</div>
+<div class="h-2 w-full bg-black/50 rounded-full overflow-hidden border border-white/5">
+<div class="h-full bg-primary rounded-full shadow-[0_0_10px_rgba(57,255,20,0.5)]" style="width: 100%;"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column (45%) -->
+<div class="xl:w-[45%] flex flex-col gap-6">
+<!-- Score Card -->
+<div class="bg-panel backdrop-blur-md border border-panel-border rounded-xl p-6 flex flex-col items-center text-center">
+<div class="relative w-32 h-32 mb-4">
+<!-- Fake circular progress -->
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 100 100">
+<circle cx="50" cy="50" fill="none" r="45" stroke="rgba(255,255,255,0.1)" stroke-width="8"></circle>
+<circle class="text-primary" cx="50" cy="50" fill="none" r="45" stroke="currentColor" stroke-dasharray="283" stroke-dashoffset="79" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center flex-col">
+<span class="text-3xl font-black text-slate-100">72</span>
+<span class="text-xs text-slate-400">/ 100</span>
+</div>
+</div>
+<h2 class="text-lg font-bold text-slate-100 mb-1">Posture Score</h2>
+<p class="text-yellow-400 text-sm font-medium">Needs Improvement</p>
+</div>
+<!-- Issues Detected -->
+<div class="flex flex-col gap-3">
+<h3 class="text-sm font-bold text-slate-400 uppercase tracking-wider">Issues Detected</h3>
+<div class="bg-red-500/10 border border-red-500/20 rounded-lg p-3 flex items-start gap-3 backdrop-blur-sm">
+<div class="mt-0.5 bg-red-500/20 text-red-500 rounded-full p-1">
+<span class="material-symbols-outlined text-[16px]">error</span>
+</div>
+<div>
+<h4 class="text-red-400 font-medium text-sm">High: Lower Back Hyperextension</h4>
+<p class="text-slate-400 text-xs mt-1">Excessive arch in lumbar spine during descent.</p>
+</div>
+</div>
+<div class="bg-yellow-500/10 border border-yellow-500/20 rounded-lg p-3 flex items-start gap-3 backdrop-blur-sm">
+<div class="mt-0.5 bg-yellow-500/20 text-yellow-500 rounded-full p-1">
+<span class="material-symbols-outlined text-[16px]">warning</span>
+</div>
+<div>
+<h4 class="text-yellow-400 font-medium text-sm">Medium: Forward Shoulder Rounding</h4>
+<p class="text-slate-400 text-xs mt-1">Shoulders are rolling forward, compromising upper back tension.</p>
+</div>
+</div>
+<div class="bg-green-500/10 border border-green-500/20 rounded-lg p-3 flex items-start gap-3 backdrop-blur-sm">
+<div class="mt-0.5 bg-green-500/20 text-green-500 rounded-full p-1">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+</div>
+<div>
+<h4 class="text-green-400 font-medium text-sm">Low: Knee Tracking</h4>
+<p class="text-slate-400 text-xs mt-1">Knees are generally tracking well over toes, minor woble detected.</p>
+</div>
+</div>
+</div>
+<!-- Correction Tips -->
+<div class="bg-panel backdrop-blur-md border border-panel-border rounded-xl p-5">
+<h3 class="text-sm font-bold text-slate-400 uppercase tracking-wider mb-4">Correction Tips</h3>
+<ol class="flex flex-col gap-3 text-sm text-slate-300">
+<li class="flex gap-3 items-start">
+<span class="flex-shrink-0 w-6 h-6 rounded-full bg-primary/20 text-primary flex items-center justify-center font-bold text-xs border border-primary/30">1</span>
+<span>Engage your core (brace) before beginning the descent to stabilize the lower back.</span>
+</li>
+<li class="flex gap-3 items-start">
+<span class="flex-shrink-0 w-6 h-6 rounded-full bg-primary/20 text-primary flex items-center justify-center font-bold text-xs border border-primary/30">2</span>
+<span>Pull the bar actively down into your traps to keep your chest up and shoulders back.</span>
+</li>
+</ol>
+<button class="w-full mt-6 py-3 bg-primary text-slate-900 rounded-lg font-bold hover:bg-primary/90 transition-colors shadow-[0_0_15px_rgba(57,255,20,0.3)]">
+                            View Full Report
+                        </button>
+</div>
+<!-- History -->
+<div>
+<h3 class="text-sm font-bold text-slate-400 uppercase tracking-wider mb-3">Recent Trend</h3>
+<div class="flex items-center gap-2 text-sm font-medium">
+<span class="text-slate-500">68</span>
+<span class="material-symbols-outlined text-slate-600 text-[16px]">arrow_right_alt</span>
+<span class="text-slate-400">71</span>
+<span class="material-symbols-outlined text-slate-600 text-[16px]">arrow_right_alt</span>
+<span class="text-primary px-2 py-1 bg-primary/10 rounded border border-primary/20">72</span>
+<span class="material-symbols-outlined text-primary text-[16px] ml-1">trending_up</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

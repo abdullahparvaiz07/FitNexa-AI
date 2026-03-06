@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FitNexa AI Onboarding - Fitness Goals</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "primary": "#39FF14",
+          "background-light": "#f6f8f5",
+          "background-dark": "#0a0a0a",
+        },
+        fontFamily: {
+          "display": ["Space Grotesk", "sans-serif"]
+        },
+        borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+        backgroundImage: {
+          'grid-pattern': "url(\"data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h40v40H0V0zm1 1h38v38H1V1z' fill='%231f2937' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E\")",
+        }
+      },
+    },
+  }
+</script>
+<style>
+  .glassmorphism {
+    background: rgba(31, 41, 55, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  .glass-card {
+    background: rgba(17, 24, 39, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(57, 255, 20, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .glass-card:hover {
+    border-color: rgba(57, 255, 20, 0.4);
+    box-shadow: 0 0 15px rgba(57, 255, 20, 0.1);
+  }
+  
+  .glass-card.selected {
+    border-color: #39FF14;
+    background: rgba(57, 255, 20, 0.05);
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.2);
+  }
+
+  .neon-glow {
+    box-shadow: 0 0 15px rgba(57, 255, 20, 0.4);
+  }
+  
+  .neon-text {
+    text-shadow: 0 0 8px rgba(57, 255, 20, 0.6);
+  }
+  
+  .pulse-dot {
+    animation: pulse 2s infinite;
+  }
+  
+  @keyframes pulse {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(57, 255, 20, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(57, 255, 20, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(57, 255, 20, 0); }
+  }
+</style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display min-h-screen relative overflow-x-hidden bg-grid-pattern">
+<div class="fixed top-24 right-8 glassmorphism rounded-xl p-4 w-64 z-50 border border-primary/20 shadow-lg">
+<div class="flex items-center gap-3">
+<div class="flex gap-1">
+<div class="w-2 h-2 rounded-full bg-primary pulse-dot" style="animation-delay: 0s"></div>
+<div class="w-2 h-2 rounded-full bg-primary pulse-dot" style="animation-delay: 0.2s"></div>
+<div class="w-2 h-2 rounded-full bg-primary pulse-dot" style="animation-delay: 0.4s"></div>
+</div>
+<p class="text-sm font-medium text-slate-300">Your AI is analyzing your selections...</p>
+</div>
+</div>
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root">
+<div class="layout-container flex h-full grow flex-col">
+<div class="px-4 md:px-10 lg:px-40 flex flex-1 justify-center py-5">
+<div class="layout-content-container flex flex-col w-full max-w-[1024px] flex-1 relative z-10">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-800 pb-4 mb-8">
+<div class="flex items-center gap-3 text-primary">
+<span class="material-symbols-outlined text-3xl neon-text">fitness_center</span>
+<h2 class="text-slate-100 text-2xl font-bold leading-tight tracking-tight">FitNexa <span class="text-primary">AI</span></h2>
+</div>
+<div class="hidden sm:flex items-center gap-2 text-sm text-slate-400">
+<span>Need help?</span>
+<a class="text-primary hover:underline" href="#">Contact Support</a>
+</div>
+</header>
+<div class="w-full mb-10">
+<div class="flex justify-between items-center mb-4">
+<p class="text-slate-100 text-lg font-medium leading-normal">Fitness Goals</p>
+<p class="text-primary text-sm font-bold leading-normal bg-primary/10 px-3 py-1 rounded-full">Step 2 of 4</p>
+</div>
+<div class="relative flex items-center justify-between w-full">
+<div class="absolute left-0 top-1/2 -translate-y-1/2 w-full h-1 bg-slate-800 rounded-full z-0"></div>
+<div class="absolute left-0 top-1/2 -translate-y-1/2 w-[33%] h-1 bg-primary rounded-full z-0 neon-glow"></div>
+<div class="relative z-10 flex flex-col items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-primary text-background-dark flex items-center justify-center font-bold text-sm">
+<span class="material-symbols-outlined text-lg">check</span>
+</div>
+<span class="text-xs text-primary font-medium hidden sm:block">Profile</span>
+</div>
+<div class="relative z-10 flex flex-col items-center gap-2">
+<div class="w-10 h-10 rounded-full bg-background-dark border-2 border-primary text-primary flex items-center justify-center font-bold text-lg neon-glow">
+        2
+      </div>
+<span class="text-xs text-primary font-bold hidden sm:block">Fitness Goals</span>
+</div>
+<div class="relative z-10 flex flex-col items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-slate-800 text-slate-400 flex items-center justify-center font-bold text-sm border border-slate-700">
+        3
+      </div>
+<span class="text-xs text-slate-500 font-medium hidden sm:block">Body Stats</span>
+</div>
+<div class="relative z-10 flex flex-col items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-slate-800 text-slate-400 flex items-center justify-center font-bold text-sm border border-slate-700">
+        4
+      </div>
+<span class="text-xs text-slate-500 font-medium hidden sm:block">AI Plan</span>
+</div>
+</div>
+</div>
+<div class="glassmorphism rounded-2xl p-6 md:p-10 w-full mb-8">
+<div class="flex flex-col gap-3 mb-10 text-center">
+<div class="flex items-center justify-center gap-3">
+<h1 class="text-slate-100 text-3xl md:text-4xl font-black leading-tight tracking-tight">What are your fitness goals?</h1>
+<span class="material-symbols-outlined text-primary text-3xl neon-text">auto_awesome</span>
+</div>
+<p class="text-slate-400 text-base md:text-lg font-normal leading-normal">Select all that apply — your AI trainer will personalize your plan based on these.</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-12">
+<div class="glass-card rounded-xl p-5 flex flex-col gap-4 cursor-pointer group">
+<div class="w-12 h-12 rounded-full bg-slate-800/80 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-2xl">local_fire_department</span>
+</div>
+<div class="flex flex-col gap-1">
+<h2 class="text-slate-100 text-lg font-bold leading-tight">Lose Weight</h2>
+<p class="text-slate-400 text-sm font-normal leading-normal">Burn fat and slim down efficiently.</p>
+</div>
+</div>
+<div class="glass-card selected rounded-xl p-5 flex flex-col gap-4 cursor-pointer relative overflow-hidden group">
+<div class="absolute top-3 right-3 text-primary">
+<span class="material-symbols-outlined">check_circle</span>
+</div>
+<div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-2xl">fitness_center</span>
+</div>
+<div class="flex flex-col gap-1">
+<h2 class="text-slate-100 text-lg font-bold leading-tight">Build Muscle</h2>
+<p class="text-slate-300 text-sm font-normal leading-normal">Increase muscle mass and strength.</p>
+</div>
+</div>
+<div class="glass-card rounded-xl p-5 flex flex-col gap-4 cursor-pointer group">
+<div class="w-12 h-12 rounded-full bg-slate-800/80 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-2xl">favorite</span>
+</div>
+<div class="flex flex-col gap-1">
+<h2 class="text-slate-100 text-lg font-bold leading-tight">Improve Endurance</h2>
+<p class="text-slate-400 text-sm font-normal leading-normal">Boost stamina and heart health.</p>
+</div>
+</div>
+<div class="glass-card rounded-xl p-5 flex flex-col gap-4 cursor-pointer group">
+<div class="w-12 h-12 rounded-full bg-slate-800/80 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-2xl">accessibility_new</span>
+</div>
+<div class="flex flex-col gap-1">
+<h2 class="text-slate-100 text-lg font-bold leading-tight">Improve Flexibility</h2>
+<p class="text-slate-400 text-sm font-normal leading-normal">Enhance mobility and stretch.</p>
+</div>
+</div>
+<div class="glass-card rounded-xl p-5 flex flex-col gap-4 cursor-pointer group">
+<div class="w-12 h-12 rounded-full bg-slate-800/80 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-2xl">sports_gymnastics</span>
+</div>
+<div class="flex flex-col gap-1">
+<h2 class="text-slate-100 text-lg font-bold leading-tight">Strength Training</h2>
+<p class="text-slate-400 text-sm font-normal leading-normal">Build overall functional strength.</p>
+</div>
+</div>
+<div class="glass-card rounded-xl p-5 flex flex-col gap-4 cursor-pointer group">
+<div class="w-12 h-12 rounded-full bg-slate-800/80 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-2xl">self_improvement</span>
+</div>
+<div class="flex flex-col gap-1">
+<h2 class="text-slate-100 text-lg font-bold leading-tight">Overall Wellness</h2>
+<p class="text-slate-400 text-sm font-normal leading-normal">Maintain a balanced, healthy lifestyle.</p>
+</div>
+</div>
+</div>
+<div class="mb-10">
+<h3 class="text-slate-100 text-lg font-bold mb-4">When do you want to achieve this?</h3>
+<div class="flex flex-wrap gap-3">
+<label class="flex-1 min-w-[120px]">
+<input class="peer sr-only" name="timeline" type="radio" value="1month"/>
+<div class="h-12 flex items-center justify-center rounded-full bg-slate-800/50 border border-slate-700 text-slate-400 cursor-pointer peer-checked:bg-primary/10 peer-checked:border-primary peer-checked:text-primary transition-all hover:bg-slate-800">
+<span class="font-medium">1 Month</span>
+</div>
+</label>
+<label class="flex-1 min-w-[120px]">
+<input checked="" class="peer sr-only" name="timeline" type="radio" value="3months"/>
+<div class="h-12 flex items-center justify-center rounded-full bg-slate-800/50 border border-slate-700 text-slate-400 cursor-pointer peer-checked:bg-primary/10 peer-checked:border-primary peer-checked:text-primary peer-checked:shadow-[0_0_10px_rgba(57,255,20,0.2)] transition-all hover:bg-slate-800">
+<span class="font-bold">3 Months</span>
+</div>
+</label>
+<label class="flex-1 min-w-[120px]">
+<input class="peer sr-only" name="timeline" type="radio" value="6months"/>
+<div class="h-12 flex items-center justify-center rounded-full bg-slate-800/50 border border-slate-700 text-slate-400 cursor-pointer peer-checked:bg-primary/10 peer-checked:border-primary peer-checked:text-primary transition-all hover:bg-slate-800">
+<span class="font-medium">6 Months</span>
+</div>
+</label>
+<label class="flex-1 min-w-[120px]">
+<input class="peer sr-only" name="timeline" type="radio" value="1year"/>
+<div class="h-12 flex items-center justify-center rounded-full bg-slate-800/50 border border-slate-700 text-slate-400 cursor-pointer peer-checked:bg-primary/10 peer-checked:border-primary peer-checked:text-primary transition-all hover:bg-slate-800">
+<span class="font-medium">1 Year</span>
+</div>
+</label>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-4">
+<h3 class="text-slate-100 text-lg font-bold">Current Motivation Level</h3>
+<span class="text-primary font-medium">Ready to crush it (7/10)</span>
+</div>
+<div class="w-full relative h-6 flex items-center">
+<div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-emerald-600 to-primary w-[70%] rounded-full neon-glow"></div>
+</div>
+<div class="absolute left-[70%] w-6 h-6 bg-background-dark border-2 border-primary rounded-full shadow-[0_0_10px_rgba(57,255,20,0.5)] -translate-x-1/2 cursor-pointer"></div>
+</div>
+<div class="flex justify-between mt-2 text-xs text-slate-500 font-medium uppercase tracking-wider">
+<span>Beginner / Needs Push</span>
+<span>Intermediate</span>
+<span>Advanced / Self-Starter</span>
+</div>
+</div>
+</div>
+<div class="flex justify-between items-center pb-10">
+<button class="px-6 py-3 rounded-full text-slate-300 font-medium hover:text-white transition-colors flex items-center gap-2 border border-transparent hover:border-slate-700 hover:bg-slate-800/50">
+<span class="material-symbols-outlined text-sm">arrow_back</span>
+    Back
+  </button>
+<button class="px-8 py-3 rounded-full bg-primary text-background-dark font-bold hover:bg-[#32e612] transition-colors flex items-center gap-2 neon-glow">
+    Continue to Body Stats
+    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FitNexa AI Progress Analytics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "primary": "#39FF14",
+          "background-light": "#f6f8f5",
+          "background-dark": "#0a0a0a",
+          "panel-bg": "rgba(255, 255, 255, 0.03)",
+          "panel-border": "rgba(57, 255, 20, 0.15)",
+        },
+        fontFamily: {
+          "display": ["Space Grotesk"]
+        },
+        borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+      },
+    },
+  }
+</script>
+<style>
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(57, 255, 20, 0.15);
+  }
+</style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display min-h-screen">
+<div class="flex h-screen overflow-hidden">
+<div class="w-64 flex-shrink-0 border-r border-panel-border bg-panel-bg backdrop-blur-md hidden md:flex flex-col">
+<div class="p-6">
+<div class="flex items-center gap-3 mb-8">
+<div class="bg-primary/20 p-2 rounded-lg text-primary">
+<span class="material-symbols-outlined">fitness_center</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-white text-xl font-bold leading-none">FitNexa AI</h1>
+<p class="text-primary text-xs font-medium uppercase tracking-wider mt-1">Premium</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-medium text-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined">exercise</span>
+<span class="font-medium text-sm">Workouts</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined">restaurant</span>
+<span class="font-medium text-sm">Nutrition</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary border border-primary/20" href="#">
+<span class="material-symbols-outlined">insights</span>
+<span class="font-medium text-sm">Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-medium text-sm">Community</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-colors mt-auto" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-medium text-sm">Settings</span>
+</a>
+</nav>
+</div>
+<div class="mt-auto p-6">
+<div class="glass-panel rounded-xl p-4 flex items-center gap-3">
+<img alt="User avatar" class="w-10 h-10 rounded-full object-cover" data-alt="User profile photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7Wdnowd9i2oEUjS1nZ-KhwKQRbBkHsCRk6MymJBfGykMUfwUBjA6oOMja7nX5BcS5Nda1m-SqUKdP6-9e_k-EnzcY5yO4ez6ZgqroBBVdHVrazNMiA8zcetQaZl1J1bpWjW9TK1N8nuAJrArq24M-RGbXj3p8QOiKitX4BtG0Law5F-3R_QZzWmkxl4_vAVOh-BtlLRvtzjOSbF1LfIT5sZradipQWtnv2gx2uR73DDvNnlb_-Su5TV1lRS7XWjMITqB9EorIbfI"/>
+<div>
+<p class="text-sm font-bold text-white">Alex Morgan</p>
+<p class="text-xs text-slate-400">Pro Member</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto">
+<div class="p-6 md:p-8 max-w-7xl mx-auto space-y-8">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<h2 class="text-3xl font-bold text-white flex items-center gap-2">Progress Analytics <span class="text-2xl">📊</span></h2>
+<p class="text-slate-400 mt-1">Track your fitness journey and AI insights</p>
+</div>
+<div class="flex flex-col sm:flex-row items-center gap-4">
+<div class="glass-panel flex p-1 rounded-lg">
+<button class="px-4 py-1.5 text-sm font-medium text-slate-400 hover:text-white rounded-md transition-colors">7 Days</button>
+<button class="px-4 py-1.5 text-sm font-medium bg-primary/20 text-primary rounded-md shadow-sm">30 Days</button>
+<button class="px-4 py-1.5 text-sm font-medium text-slate-400 hover:text-white rounded-md transition-colors">90 Days</button>
+<button class="px-4 py-1.5 text-sm font-medium text-slate-400 hover:text-white rounded-md transition-colors">This Year</button>
+</div>
+<button class="flex items-center gap-2 px-4 py-2 rounded-lg border border-primary text-primary hover:bg-primary/10 transition-colors text-sm font-bold">
+<span class="material-symbols-outlined text-lg">download</span>
+            Export Report
+          </button>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="glass-panel p-5 rounded-xl flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<p class="text-slate-400 text-sm font-medium">Total Workouts</p>
+<span class="material-symbols-outlined text-primary/70">fitness_center</span>
+</div>
+<div class="flex items-end gap-2 mt-2">
+<h3 class="text-3xl font-bold text-white">24</h3>
+<span class="text-primary text-sm font-medium flex items-center mb-1"><span class="material-symbols-outlined text-sm">arrow_upward</span> 8</span>
+</div>
+</div>
+<div class="glass-panel p-5 rounded-xl flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<p class="text-slate-400 text-sm font-medium">Avg Calories/Day</p>
+<span class="material-symbols-outlined text-primary/70">local_fire_department</span>
+</div>
+<div class="flex items-end gap-2 mt-2">
+<h3 class="text-3xl font-bold text-white">2,180</h3>
+<span class="text-primary text-sm font-medium flex items-center mb-1"><span class="material-symbols-outlined text-sm">arrow_upward</span> 4%</span>
+</div>
+</div>
+<div class="glass-panel p-5 rounded-xl flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<p class="text-slate-400 text-sm font-medium">Strength Gain</p>
+<span class="material-symbols-outlined text-primary/70">trending_up</span>
+</div>
+<div class="flex items-end gap-2 mt-2">
+<h3 class="text-3xl font-bold text-white">+12.5%</h3>
+<span class="text-primary text-sm font-medium flex items-center mb-1"><span class="material-symbols-outlined text-sm">arrow_upward</span> 12.5%</span>
+</div>
+</div>
+<div class="glass-panel p-5 rounded-xl flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<p class="text-slate-400 text-sm font-medium">Body Fat</p>
+<span class="material-symbols-outlined text-primary/70">monitor_weight</span>
+</div>
+<div class="flex items-end gap-2 mt-2">
+<h3 class="text-3xl font-bold text-white">18.2%</h3>
+<span class="text-primary text-sm font-medium flex items-center mb-1"><span class="material-symbols-outlined text-sm">arrow_downward</span> 1.8%</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+<div class="glass-panel p-6 rounded-xl">
+<h3 class="text-lg font-bold text-white mb-6">Workout Frequency</h3>
+<div class="h-64 flex items-end justify-between gap-2">
+<div class="w-full flex flex-col items-center gap-2 group">
+<div class="w-full bg-primary/20 rounded-t-md h-12 relative group-hover:bg-primary/40 transition-colors"></div>
+<span class="text-xs text-slate-400">Mon</span>
+</div>
+<div class="w-full flex flex-col items-center gap-2 group">
+<div class="w-full bg-primary rounded-t-md h-32 relative group-hover:bg-primary/80 transition-colors"></div>
+<span class="text-xs text-slate-400">Tue</span>
+</div>
+<div class="w-full flex flex-col items-center gap-2 group">
+<div class="w-full bg-primary/60 rounded-t-md h-24 relative group-hover:bg-primary/80 transition-colors"></div>
+<span class="text-xs text-slate-400">Wed</span>
+</div>
+<div class="w-full flex flex-col items-center gap-2 group">
+<div class="w-full bg-primary rounded-t-md h-40 relative group-hover:bg-primary/80 transition-colors"></div>
+<span class="text-xs text-slate-400">Thu</span>
+</div>
+<div class="w-full flex flex-col items-center gap-2 group">
+<div class="w-full bg-primary/20 rounded-t-md h-16 relative group-hover:bg-primary/40 transition-colors"></div>
+<span class="text-xs text-slate-400">Fri</span>
+</div>
+<div class="w-full flex flex-col items-center gap-2 group">
+<div class="w-full bg-primary rounded-t-md h-48 relative group-hover:bg-primary/80 transition-colors"></div>
+<span class="text-xs text-slate-400">Sat</span>
+</div>
+<div class="w-full flex flex-col items-center gap-2 group">
+<div class="w-full bg-primary/40 rounded-t-md h-20 relative group-hover:bg-primary/60 transition-colors"></div>
+<span class="text-xs text-slate-400">Sun</span>
+</div>
+</div>
+</div>
+<div class="glass-panel p-6 rounded-xl">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-lg font-bold text-white">Body Weight Trend</h3>
+<span class="text-xs text-slate-400 border border-slate-700 rounded px-2 py-1">Target: 175 lbs</span>
+</div>
+<div class="h-64 relative w-full border-b border-l border-slate-800 pb-2 pl-2 flex flex-col justify-end">
+<div class="absolute top-1/4 left-0 w-full border-t border-dashed border-primary/40 flex items-center z-0">
+<span class="absolute -left-10 text-xs text-slate-500">175</span>
+</div>
+<svg class="w-full h-full text-primary z-10 relative overflow-visible" preserveaspectratio="none" viewbox="0 0 100 100">
+<defs>
+<lineargradient id="areaGradient" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#39FF14" stop-opacity="0.3"></stop>
+<stop offset="100%" stop-color="#39FF14" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<path d="M0,80 Q10,75 20,70 T40,65 T60,50 T80,45 T100,40 L100,100 L0,100 Z" fill="url(#areaGradient)"></path>
+<path d="M0,80 Q10,75 20,70 T40,65 T60,50 T80,45 T100,40" fill="none" stroke="currentColor" stroke-width="2"></path>
+<circle cx="100" cy="40" fill="currentColor" r="3"></circle>
+</svg>
+</div>
+</div>
+</div>
+<div class="mt-8 mb-4">
+<h3 class="text-xl font-bold text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">auto_awesome</span>
+          AI Insights
+        </h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="glass-panel p-5 rounded-xl relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-24 h-24 bg-primary/10 rounded-full blur-2xl -mr-10 -mt-10 group-hover:bg-primary/20 transition-all"></div>
+<div class="flex items-start gap-3 relative z-10">
+<div class="bg-primary/20 p-2 rounded-lg text-primary mt-1">
+<span class="material-symbols-outlined text-sm">fitness_center</span>
+</div>
+<div>
+<h4 class="text-white font-bold mb-1">Squat Improvement</h4>
+<p class="text-slate-400 text-sm">Your squat 1RM has improved by 22% over the last 30 days. Maintain your current volume.</p>
+</div>
+</div>
+</div>
+<div class="glass-panel p-5 rounded-xl relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-24 h-24 bg-primary/10 rounded-full blur-2xl -mr-10 -mt-10 group-hover:bg-primary/20 transition-all"></div>
+<div class="flex items-start gap-3 relative z-10">
+<div class="bg-primary/20 p-2 rounded-lg text-primary mt-1">
+<span class="material-symbols-outlined text-sm">battery_charging_full</span>
+</div>
+<div>
+<h4 class="text-white font-bold mb-1">Optimal Recovery</h4>
+<p class="text-slate-400 text-sm">HRV indicates optimal recovery status. Today is an ideal day for high-intensity interval training.</p>
+</div>
+</div>
+</div>
+<div class="glass-panel p-5 rounded-xl relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-24 h-24 bg-primary/10 rounded-full blur-2xl -mr-10 -mt-10 group-hover:bg-primary/20 transition-all"></div>
+<div class="flex items-start gap-3 relative z-10">
+<div class="bg-primary/20 p-2 rounded-lg text-primary mt-1">
+<span class="material-symbols-outlined text-sm">restaurant_menu</span>
+</div>
+<div>
+<h4 class="text-white font-bold mb-1">Protein Goal Met</h4>
+<p class="text-slate-400 text-sm">You've hit your 180g protein target for 5 consecutive days, correlating with your strength gains.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>
