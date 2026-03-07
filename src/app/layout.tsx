@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/Providers";
+import PageTransitionProvider from "@/components/PageTransitionProvider";
 
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"] });
 
@@ -24,7 +25,9 @@ export default function RootLayout({
         <Providers>
           <div className="relative z-10 flex h-auto min-h-screen w-full flex-col group/design-root">
             <div className="layout-container flex h-full grow flex-col">
-              {children}
+              <PageTransitionProvider>
+                {children}
+              </PageTransitionProvider>
             </div>
           </div>
         </Providers>
