@@ -16,9 +16,6 @@ export default function Navbar() {
           <Link href="#features" className="text-slate-300 hover:text-primary transition-colors text-sm font-medium leading-normal">
             Features
           </Link>
-          <Link href="#pricing" className="text-slate-300 hover:text-primary transition-colors text-sm font-medium leading-normal">
-            Pricing
-          </Link>
           <Link href="#about" className="text-slate-300 hover:text-primary transition-colors text-sm font-medium leading-normal">
             About
           </Link>

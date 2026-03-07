@@ -34,21 +34,6 @@ export default function Footer() {
             </span>
           </div>
         </div>
-        
-        <div className="flex flex-col shrink-0 gap-1 bg-slate-900/80 p-3 rounded-lg border border-slate-700 w-full md:w-auto">
-          <strong className="text-slate-300 flex items-center gap-2 mb-1">
-            <span className="material-symbols-outlined text-[16px] text-primary">key</span>
-            Demo Account Login
-          </strong>
-          <div className="flex justify-between md:justify-start gap-4">
-            <span className="text-slate-500">Email:</span>
-            <span className="text-white font-mono select-all">abdullahparvaizofficial@gmail.com</span>
-          </div>
-          <div className="flex justify-between md:justify-start gap-4">
-            <span className="text-slate-500">Pass:</span>
-            <span className="text-white font-mono select-all">FitNexaAI@2026.Ltd</span>
-          </div>
-        </div>
       </div>
     </footer>
   );
