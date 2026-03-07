@@ -30,7 +30,7 @@ export default function Home() {
               <div className="flex-wrap gap-4 flex">
                 <Link href="/signup">
                   <button className="flex cursor-pointer items-center justify-center rounded-xl h-14 px-8 bg-primary hover:bg-primary/90 text-slate-900 text-base font-bold neon-glow transition-all">
-                    <span className="truncate">Start Free Trial</span>
+                    <span className="truncate">Start Free</span>
                   </button>
                 </Link>
                 <button className="flex cursor-pointer items-center justify-center rounded-xl h-14 px-8 bg-transparent border-2 border-slate-700 hover:border-primary text-slate-100 hover:text-primary text-base font-bold transition-all">
@@ -226,10 +226,10 @@ export default function Home() {
             <p className="text-slate-400 text-lg mb-10 max-w-2xl">Join thousands of users who have revolutionized their fitness routines with FitNexa AI. Start your premium experience today.</p>
             <Link href="/signup">
               <button className="flex cursor-pointer items-center justify-center rounded-xl h-16 px-10 bg-primary hover:bg-primary/90 text-slate-900 text-lg font-black uppercase tracking-wider neon-glow transition-all transform hover:scale-105">
-                Start Free 14-Day Trial
+                Start Free
               </button>
             </Link>
-            <p className="text-slate-500 text-sm mt-4">No credit card required for trial.</p>
+
           </div>
         </div>
       </main>
