@@ -38,21 +38,6 @@ export default function Home() {
                   <span className="truncate">Watch Demo</span>
                 </button>
               </div>
-              <div className="flex items-center gap-4 mt-4">
-                <div className="flex -space-x-3">
-                  <div className="w-10 h-10 rounded-full border-2 border-background-dark bg-slate-700 overflow-hidden">
-                    <Image src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-Qiqty2olr1WeeTs2KSfnmYTDqvIw6f7xgsok2yM9mGUDeYTT_iM-lUeux7JslyPOVUO5JfN4kVuvAw2txgq_cacvvZGDo6kmWhH1WVdETL5AQcPX8mMKBTW8JQsDXT2l-xkwrSPT4mGI_4J0GAlv0sAQcVGaoQHK4WjPfpgz3ZV_uMMdAEc_08HRvaMlrIIp2Is_0jIm2urT8K4vP-n2CCJpZ1kgHjoQKLf8CWUz_K81Mkoll8DCCSs5qCmnmwJeaxu8ugvsUe4" alt="User portrait" width={40} height={40} className="object-cover w-full h-full" />
-                  </div>
-                  <div className="w-10 h-10 rounded-full border-2 border-background-dark bg-slate-700 overflow-hidden">
-                    <Image src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcIkfP4tB0u2NXeKLuLn0wH8FQsqaWviPTjdq1i3mZOnQZ_34qxwPSnBC2Vh8W-KMcVYv1Eo15zvjm2u_nVahzHxq6qHLV0paTTAbCvBI4TTKVJGwR5v_ZfoPFu-EDnvXbgnjAUgR6g-dT-LMcGhy1oEFO9HF3UXhr_3a4VeZHq1R_kqUPJMCRmYyU_ff4Eh3Zs3ZTsDwaWITVuPVvi1D035zviSg0kpojplSqsLVuadSfwWBiTS6zqzaAmIrX8eUIOxlGaYEoDuA" alt="User portrait" width={40} height={40} className="object-cover w-full h-full" />
-                  </div>
-                  <div className="w-10 h-10 rounded-full border-2 border-background-dark bg-slate-700 overflow-hidden">
-                    <Image src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-vqCIfKGd2N5hOEngjjv3OlDQTHoMuLFtGYEbhMVbs3-rjS-i7J8WxghvNeGWpSn1RYQ41kIhQkradLtMoUQanpEPV_fGGQ13OHuJ3T0f1_kc_iJI8j03uMz8Tt0RwFcUiosedka1JfXkZaZw-UfbKclSD3jKJeFvIIEsyCsXo9UpMdKXhbXqxpqgH4RVVgvQG5ms8-SfwUV0BCZt5tq5YkV5gFOswi_gPrrdncOVSY4vuy3aMx6H9HzC05VHuX4ToQVDG8bR05I" alt="User portrait" width={40} height={40} className="object-cover w-full h-full" />
-                  </div>
-                  <div className="w-10 h-10 rounded-full border-2 border-background-dark bg-slate-800 flex items-center justify-center text-xs font-bold text-slate-300 z-10 relative">+2k</div>
-                </div>
-                <div className="text-sm text-slate-400">Trusted by <span className="text-slate-100 font-semibold">50,000+</span> athletes.</div>
-              </div>
             </div>
             
             <div className="w-full @[864px]:w-1/2 relative flex justify-center items-center">
