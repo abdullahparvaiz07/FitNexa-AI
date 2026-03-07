@@ -96,11 +96,6 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-primary/5 pointer-events-none"></div>
           <div className="flex flex-wrap gap-8 justify-between relative z-10 text-center">
             <div className="flex min-w-[150px] flex-1 flex-col gap-2">
-              <p className="text-slate-400 text-sm font-medium uppercase tracking-wider">Active Users</p>
-              <p className="text-slate-100 text-4xl font-black leading-tight">50K+</p>
-            </div>
-            <div className="hidden sm:block w-px bg-slate-700"></div>
-            <div className="flex min-w-[150px] flex-1 flex-col gap-2">
               <p className="text-slate-400 text-sm font-medium uppercase tracking-wider">AI Accuracy</p>
               <p className="text-primary text-4xl font-black leading-tight neon-text-glow">98%</p>
             </div>
@@ -108,14 +103,6 @@ export default function Home() {
             <div className="flex min-w-[150px] flex-1 flex-col gap-2">
               <p className="text-slate-400 text-sm font-medium uppercase tracking-wider">Workouts</p>
               <p className="text-slate-100 text-4xl font-black leading-tight">500+</p>
-            </div>
-            <div className="hidden sm:block w-px bg-slate-700"></div>
-            <div className="flex min-w-[150px] flex-1 flex-col gap-2">
-              <p className="text-slate-400 text-sm font-medium uppercase tracking-wider">User Rating</p>
-              <div className="flex items-center justify-center gap-2">
-                <p className="text-slate-100 text-4xl font-black leading-tight">4.9</p>
-                <span className="material-symbols-outlined text-primary text-3xl">star</span>
-              </div>
             </div>
           </div>
         </div>
