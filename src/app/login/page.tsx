@@ -13,6 +13,8 @@ export default function LoginPage() {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
+  const [showPassword, setShowPassword] = useState(false);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
@@ -170,12 +172,16 @@ export default function LoginPage() {
                   id="password" 
                   placeholder="••••••••" 
                   required 
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
-                <button className="absolute inset-y-0 right-0 flex items-center pr-4 text-slate-500 hover:text-primary transition-colors focus:outline-none" type="button">
-                  <span className="material-symbols-outlined text-xl">visibility</span>
+                <button 
+                  className="absolute inset-y-0 right-0 flex items-center pr-4 text-slate-500 hover:text-primary transition-colors focus:outline-none" 
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  <span className="material-symbols-outlined text-xl">{showPassword ? 'visibility_off' : 'visibility'}</span>
                 </button>
               </div>
             </div>
