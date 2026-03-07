@@ -62,7 +62,8 @@ export const authOptions = {
   },
   pages: {
     signIn: '/login',
-  }
+  },
+  secret: process.env.NEXTAUTH_SECRET || "b6X8gJ9p1M3vR5cQw2nH7kL4yT0zF8aE",
 };
 
 const handler = NextAuth(authOptions);
