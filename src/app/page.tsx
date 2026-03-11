@@ -32,7 +32,7 @@ export default function Home() {
     visible: { 
       opacity: 1, 
       scale: 1,
-      transition: { duration: 0.8, type: "spring", bounce: 0.4 }
+      transition: { duration: 0.8, type: "spring" as any, bounce: 0.4 }
     }
   };
 
