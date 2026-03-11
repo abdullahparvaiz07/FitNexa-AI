@@ -1,10 +1,12 @@
 "use client";
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useSession } from 'next-auth/react';
 import clsx from 'clsx';
 
 export default function Sidebar() {
   const pathname = usePathname();
+  const { data: session } = useSession();
 
   const navItems = [
     { name: 'Dashboard', href: '/dashboard', icon: 'dashboard' },
@@ -30,7 +32,7 @@ export default function Sidebar() {
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-full bg-cover bg-center border border-primary/30" style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuCAKQZLZ56Tc6QotHKa8zi_kQaLUKvZFcyiqpDdZELSLcmCXObX-2lBUabXOomiJSZal0q80QKq6OrkhamvcYKgQqfW3URFwxM435a_N8qNbIsA5eS7sOhhgy_dtqaq2qYWdSWbQxgLoFJL_CNbvD2va34BOyz9mfOTpneBSkG3mm0oFo4FpkIMpBZ3_qRJvRPZT1EMMaF3g-drnxj7o2EDsgN1EnPtzbUVYaDqGWOwcL3XcCZ_LQULkkh11WN1fyHfrvs4EffCJKg")' }}></div>
           <div className="flex flex-col">
-            <h2 className="text-white text-sm font-semibold">Alex Johnson</h2>
+            <h2 className="text-white text-sm font-semibold">{session?.user?.name || 'Guest User'}</h2>
             <span className="text-[10px] uppercase font-bold text-primary bg-primary/10 px-2 py-0.5 rounded-full w-max border border-primary/20 mt-1 shadow-[0_0_8px_rgba(57,255,20,0.2)]">Pro Member</span>
           </div>
         </div>
