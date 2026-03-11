@@ -32,7 +32,13 @@ export default function Home() {
     visible: { 
       opacity: 1, 
       scale: 1,
-      transition: { duration: 0.8, type: "spring" as any, bounce: 0.4 }
+      transition: { 
+        duration: 0.8, 
+        type: "spring" as any, 
+        bounce: 0.4,
+        staggerChildren: 0.15,
+        delayChildren: 0.4
+      }
     }
   };
 
@@ -87,49 +93,49 @@ export default function Home() {
             >
               <div className="absolute inset-0 bg-primary/20 blur-[100px] rounded-full z-0 animate-pulse" style={{ animationDuration: '4s' }}></div>
               <div className="glass-panel rounded-2xl p-4 w-full aspect-square max-w-md relative z-10 shadow-[0_20px_50px_-12px_rgba(57,255,20,0.15)] flex flex-col gap-4 overflow-hidden border border-slate-700/50 hover:border-primary/30 transition-colors duration-500">
-                <div className="flex justify-between items-center px-2 pt-2">
+                <motion.div variants={itemVariants} className="flex justify-between items-center px-2 pt-2">
                   <div className="flex items-center gap-2">
                     <div className="w-3 h-3 rounded-full bg-red-500"></div>
                     <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
                     <div className="w-3 h-3 rounded-full bg-green-500"></div>
                   </div>
                   <div className="text-xs text-slate-500 font-medium">FitNexa Dashboard</div>
-                </div>
-                <div className="w-full bg-slate-800/50 rounded-xl aspect-[16/9] flex items-end p-4 relative overflow-hidden border border-slate-700/30">
+                </motion.div>
+                <motion.div variants={itemVariants} className="w-full bg-slate-800/50 rounded-xl aspect-[16/9] flex items-end p-4 relative overflow-hidden border border-slate-700/30">
                   <div className="absolute top-4 left-4">
                     <div className="text-xs text-slate-400">Current Heart Rate</div>
                     <div className="text-2xl font-bold text-primary flex items-center gap-1">142 <span className="text-xs text-slate-400 font-normal">bpm</span></div>
                   </div>
                   <div className="flex w-full h-24 items-end gap-2">
-                    <div className="flex-1 bg-primary/20 rounded-t-sm h-[30%] relative"><div className="absolute top-0 w-full h-1 bg-primary shadow-[0_0_8px_#39FF14]"></div></div>
-                    <div className="flex-1 bg-primary/20 rounded-t-sm h-[40%] relative"><div className="absolute top-0 w-full h-1 bg-primary shadow-[0_0_8px_#39FF14]"></div></div>
-                    <div className="flex-1 bg-primary/20 rounded-t-sm h-[60%] relative"><div className="absolute top-0 w-full h-1 bg-primary shadow-[0_0_8px_#39FF14]"></div></div>
-                    <div className="flex-1 bg-primary/20 rounded-t-sm h-[50%] relative"><div className="absolute top-0 w-full h-1 bg-primary shadow-[0_0_8px_#39FF14]"></div></div>
-                    <div className="flex-1 bg-primary/20 rounded-t-sm h-[80%] relative"><div className="absolute top-0 w-full h-1 bg-primary shadow-[0_0_8px_#39FF14]"></div></div>
-                    <div className="flex-1 bg-primary/40 rounded-t-sm h-[95%] relative"><div className="absolute top-0 w-full h-1 bg-primary shadow-[0_0_12px_#39FF14]"></div></div>
-                    <div className="flex-1 bg-primary/20 rounded-t-sm h-[70%] relative"><div className="absolute top-0 w-full h-1 bg-primary shadow-[0_0_8px_#39FF14]"></div></div>
+                    <motion.div initial={{ height: 0 }} whileInView={{ height: '30%' }} transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }} className="flex-1 bg-primary/20 rounded-t-sm relative"><div className="absolute top-0 w-full h-1 bg-primary shadow-[0_0_8px_#39FF14]"></div></motion.div>
+                    <motion.div initial={{ height: 0 }} whileInView={{ height: '40%' }} transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }} className="flex-1 bg-primary/20 rounded-t-sm relative"><div className="absolute top-0 w-full h-1 bg-primary shadow-[0_0_8px_#39FF14]"></div></motion.div>
+                    <motion.div initial={{ height: 0 }} whileInView={{ height: '60%' }} transition={{ duration: 0.8, delay: 0.7, ease: "easeOut" }} className="flex-1 bg-primary/20 rounded-t-sm relative"><div className="absolute top-0 w-full h-1 bg-primary shadow-[0_0_8px_#39FF14]"></div></motion.div>
+                    <motion.div initial={{ height: 0 }} whileInView={{ height: '50%' }} transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }} className="flex-1 bg-primary/20 rounded-t-sm relative"><div className="absolute top-0 w-full h-1 bg-primary shadow-[0_0_8px_#39FF14]"></div></motion.div>
+                    <motion.div initial={{ height: 0 }} whileInView={{ height: '80%' }} transition={{ duration: 0.8, delay: 0.9, ease: "easeOut" }} className="flex-1 bg-primary/20 rounded-t-sm relative"><div className="absolute top-0 w-full h-1 bg-primary shadow-[0_0_8px_#39FF14]"></div></motion.div>
+                    <motion.div initial={{ height: 0 }} whileInView={{ height: '95%' }} transition={{ duration: 0.8, delay: 1.0, ease: "easeOut" }} className="flex-1 bg-primary/40 rounded-t-sm relative"><div className="absolute top-0 w-full h-1 bg-primary shadow-[0_0_12px_#39FF14]"></div></motion.div>
+                    <motion.div initial={{ height: 0 }} whileInView={{ height: '70%' }} transition={{ duration: 0.8, delay: 1.1, ease: "easeOut" }} className="flex-1 bg-primary/20 rounded-t-sm relative"><div className="absolute top-0 w-full h-1 bg-primary shadow-[0_0_8px_#39FF14]"></div></motion.div>
                   </div>
-                </div>
+                </motion.div>
                 <div className="flex gap-4 w-full h-full">
-                  <div className="w-1/2 bg-slate-800/50 rounded-xl p-4 flex flex-col justify-between border border-slate-700/30 relative overflow-hidden">
-                    <div className="absolute -right-4 -bottom-4 w-24 h-24 bg-primary/10 rounded-full blur-xl"></div>
+                  <motion.div variants={itemVariants} className="w-1/2 bg-slate-800/50 rounded-xl p-4 flex flex-col justify-between border border-slate-700/30 relative overflow-hidden group">
+                    <div className="absolute -right-4 -bottom-4 w-24 h-24 bg-primary/10 rounded-full blur-xl transition-all group-hover:bg-primary/20 group-hover:scale-150 duration-500"></div>
                     <div className="flex items-center gap-2 mb-2">
-                      <span className="material-symbols-outlined text-primary text-sm">fitness_center</span>
+                      <span className="material-symbols-outlined text-primary text-sm group-hover:rotate-12 transition-transform">fitness_center</span>
                       <div className="text-xs text-slate-300">Workout Plan</div>
                     </div>
                     <div className="text-sm font-semibold text-slate-100">Upper Body Power</div>
                     <div className="text-xs text-slate-400 mt-1">AI Generated • 45m</div>
-                    <div className="mt-4 bg-primary/10 w-fit text-primary px-2 py-1 rounded text-[10px] font-bold">START NOW</div>
-                  </div>
-                  <div className="w-1/2 bg-slate-800/50 rounded-xl p-3 flex flex-col gap-2 border border-slate-700/30">
+                    <div className="mt-4 bg-primary/10 w-fit text-primary px-2 py-1 rounded text-[10px] font-bold group-hover:bg-primary group-hover:text-slate-900 transition-colors cursor-default">START NOW</div>
+                  </motion.div>
+                  <motion.div variants={itemVariants} className="w-1/2 bg-slate-800/50 rounded-xl p-3 flex flex-col gap-2 border border-slate-700/30">
                     <div className="text-xs text-slate-400 mb-1">AI Coach Messages</div>
-                    <div className="bg-slate-700/50 rounded-lg rounded-tl-none p-2 text-[10px] text-slate-200 w-11/12 border border-slate-600/50">
+                    <motion.div initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: 1.2 }} className="bg-slate-700/50 rounded-lg rounded-tl-none p-2 text-[10px] text-slate-200 w-11/12 border border-slate-600/50">
                       Your recovery is looking optimal today. Ready to push?
-                    </div>
-                    <div className="bg-primary/20 rounded-lg rounded-tr-none p-2 text-[10px] text-primary w-11/12 self-end text-right border border-primary/30">
+                    </motion.div>
+                    <motion.div initial={{ opacity: 0, x: 10 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: 1.6 }} className="bg-primary/20 rounded-lg rounded-tr-none p-2 text-[10px] text-primary w-11/12 self-end text-right border border-primary/30">
                       Let's go! I'm ready.
-                    </div>
-                  </div>
+                    </motion.div>
+                  </motion.div>
                 </div>
               </div>
             </motion.div>

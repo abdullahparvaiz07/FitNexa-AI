@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 type WorkoutEntry = {
   id: string;
@@ -53,9 +54,31 @@ export default function WorkoutsPage() {
   // Find most recent or uncompleted workout
   const activeWorkout = workouts.length > 0 ? workouts[0] : null;
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1, delayChildren: 0.1 }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.5, ease: "easeOut" as any }
+    }
+  };
+
   return (
-    <div className="flex flex-col gap-6 lg:gap-8 max-w-7xl mx-auto w-full">
-      <header className="flex flex-wrap justify-between items-center gap-4 mb-2">
+    <motion.div 
+      className="flex flex-col gap-6 lg:gap-8 max-w-7xl mx-auto w-full"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
+      <motion.header variants={itemVariants} className="flex flex-wrap justify-between items-center gap-4 mb-2">
         <div>
           <h2 className="text-white text-3xl font-bold leading-tight tracking-tight flex items-center gap-2">
             AI Workout Planner <span className="material-symbols-outlined text-primary text-3xl neon-text-glow">auto_awesome</span>
@@ -66,22 +89,22 @@ export default function WorkoutsPage() {
           <span className="material-symbols-outlined text-[20px]">magic_button</span>
           Generate New Plan
         </button>
-      </header>
+      </motion.header>
 
-      <div className="flex gap-2 flex-wrap">
+      <motion.div variants={itemVariants} className="flex gap-2 flex-wrap">
         <button className="flex h-9 items-center justify-center rounded-full bg-surface-dark border border-white/10 px-5 text-slate-300 text-sm font-medium hover:bg-white/10 transition-colors">All</button>
         <button className="flex h-9 items-center justify-center rounded-full bg-primary/20 border border-primary/50 px-5 text-primary text-sm font-medium shadow-[0_0_10px_rgba(56,255,20,0.1)]">Strength</button>
         <button className="flex h-9 items-center justify-center rounded-full bg-surface-dark border border-white/10 px-5 text-slate-300 text-sm font-medium hover:bg-white/10 transition-colors">Cardio</button>
         <button className="flex h-9 items-center justify-center rounded-full bg-surface-dark border border-white/10 px-5 text-slate-300 text-sm font-medium hover:bg-white/10 transition-colors">Flexibility</button>
         <button className="flex h-9 items-center justify-center rounded-full bg-surface-dark border border-white/10 px-5 text-slate-300 text-sm font-medium hover:bg-white/10 transition-colors">HIIT</button>
-      </div>
+      </motion.div>
 
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_350px] gap-8 mt-2">
         {/* LEFT COLUMN */}
         <div className="flex flex-col gap-6">
           
           {/* Weekly Strip */}
-          <div className="glass-panel rounded-xl p-2 flex justify-between items-center relative overflow-hidden border border-surface-glass-border shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]">
+          <motion.div variants={itemVariants} className="glass-panel rounded-xl p-2 flex justify-between items-center relative overflow-hidden border border-surface-glass-border shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]">
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent"></div>
             
             {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map((day, idx) => {
@@ -116,10 +139,10 @@ export default function WorkoutsPage() {
                 </button>
               );
             })}
-          </div>
+          </motion.div>
 
           {/* AI Suggestion Banner */}
-          <div className="glass-panel rounded-xl p-4 flex flex-col sm:flex-row items-start gap-4 border border-primary/30 relative overflow-hidden shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]">
+          <motion.div variants={itemVariants} className="glass-panel rounded-xl p-4 flex flex-col sm:flex-row items-start gap-4 border border-primary/30 relative overflow-hidden shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]">
             <div className="absolute inset-0 bg-primary/5"></div>
             <div className="absolute -left-10 top-1/2 -translate-y-1/2 w-32 h-32 bg-primary/20 blur-[30px] rounded-full"></div>
             
@@ -136,10 +159,10 @@ export default function WorkoutsPage() {
             <button className="z-10 text-slate-400 hover:text-white mt-1 self-end sm:self-auto">
               <span className="material-symbols-outlined text-sm">close</span>
             </button>
-          </div>
+          </motion.div>
 
           <div className="flex flex-col gap-4">
-            <h3 className="text-white font-bold text-lg mb-2">My Workouts</h3>
+            <motion.h3 variants={itemVariants} className="text-white font-bold text-lg mb-2">My Workouts</motion.h3>
             
             {/* Card 1: Active Workout */}
             {isLoading ? (
@@ -151,7 +174,7 @@ export default function WorkoutsPage() {
                </div>
             ) : (
                workouts.map((workout) => (
-                <div key={workout.id} className="glass-panel rounded-xl p-5 border border-primary/40 relative overflow-hidden group hover:border-primary/60 transition-colors shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] mb-4">
+                <motion.div variants={itemVariants} key={workout.id} className="glass-panel rounded-xl p-5 border border-primary/40 relative overflow-hidden group hover:border-primary/60 transition-colors shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] mb-4">
                   <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 blur-[40px] rounded-full translate-x-10 -translate-y-10 group-hover:bg-primary/20 transition-all"></div>
                   
                   <div className="flex flex-col md:flex-row gap-5 relative z-10">
@@ -207,12 +230,12 @@ export default function WorkoutsPage() {
                       </div>
                     </div>
                   </div>
-                </div>
+                </motion.div>
                ))
             )}
 
             {/* Card 2: Rest Day */}
-            <div className="glass-panel rounded-xl p-5 border border-white/5 opacity-80 hover:opacity-100 transition-opacity cursor-pointer">
+            <motion.div variants={itemVariants} className="glass-panel rounded-xl p-5 border border-white/5 opacity-80 hover:opacity-100 transition-opacity cursor-pointer">
               <div className="flex flex-col md:flex-row gap-5 items-center">
                 <div className="w-14 h-14 rounded-full bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 shrink-0">
                   <span className="material-symbols-outlined text-3xl">self_improvement</span>
@@ -228,10 +251,10 @@ export default function WorkoutsPage() {
                   View Tips
                 </button>
               </div>
-            </div>
+            </motion.div>
 
             {/* Card 3: Future Workout */}
-            <div className="glass-panel rounded-xl p-5 border border-white/5 opacity-70 hover:opacity-100 transition-opacity cursor-pointer">
+            <motion.div variants={itemVariants} className="glass-panel rounded-xl p-5 border border-white/5 opacity-70 hover:opacity-100 transition-opacity cursor-pointer">
               <div className="flex justify-between items-center gap-4">
                 <div>
                   <div className="flex items-center gap-2 mb-1">
@@ -247,7 +270,7 @@ export default function WorkoutsPage() {
                   <span className="material-symbols-outlined">more_horiz</span>
                 </button>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
 
@@ -255,7 +278,7 @@ export default function WorkoutsPage() {
         <div className="flex flex-col gap-6">
           
           {/* Quick Stats */}
-          <div className="glass-panel rounded-xl p-5 border border-white/5 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]">
+          <motion.div variants={itemVariants} className="glass-panel rounded-xl p-5 border border-white/5 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]">
             <h3 className="text-white font-bold text-base mb-4 flex items-center gap-2">
               <span className="material-symbols-outlined text-primary text-[20px]">electric_bolt</span>
               Weekly Progress
@@ -285,10 +308,10 @@ export default function WorkoutsPage() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Muscle Focus */}
-          <div className="glass-panel rounded-xl p-5 border border-white/5 flex flex-col items-center shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]">
+          <motion.div variants={itemVariants} className="glass-panel rounded-xl p-5 border border-white/5 flex flex-col items-center shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]">
             <h3 className="text-white font-bold text-base w-full mb-4">Muscle Focus (Current Block)</h3>
             <div className="w-48 h-48 relative my-2">
               <div className="absolute inset-0 bg-background-dark/30 rounded-full border border-white/10"></div>
@@ -309,10 +332,10 @@ export default function WorkoutsPage() {
               <span className="absolute bottom-[20%] -left-8 text-[10px] text-slate-400 font-medium whitespace-nowrap">Arms</span>
               <span className="absolute top-[20%] -left-[40px] text-[10px] text-slate-400 font-medium whitespace-nowrap">Shoulders</span>
             </div>
-          </div>
+          </motion.div>
 
           {/* PR Tracker */}
-          <div className="glass-panel rounded-xl p-5 border border-white/5 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]">
+          <motion.div variants={itemVariants} className="glass-panel rounded-xl p-5 border border-white/5 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]">
             <div className="flex justify-between items-center mb-4">
               <h3 className="text-white font-bold text-base">Recent PRs</h3>
               <span className="text-xs text-primary font-medium bg-primary/10 px-2 py-1 rounded">This Month</span>
@@ -367,10 +390,10 @@ export default function WorkoutsPage() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* AI Difficulty */}
-          <div className="glass-panel rounded-xl p-5 border border-primary/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] bg-gradient-to-b from-background-dark/80 to-background-dark/30">
+          <motion.div variants={itemVariants} className="glass-panel rounded-xl p-5 border border-primary/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] bg-gradient-to-b from-background-dark/80 to-background-dark/30">
             <div className="flex justify-between items-start mb-4">
               <div>
                 <h3 className="text-white font-bold text-base flex items-center gap-1.5">
@@ -397,10 +420,10 @@ export default function WorkoutsPage() {
                 <span>Max</span>
               </div>
             </div>
-          </div>
+          </motion.div>
           
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

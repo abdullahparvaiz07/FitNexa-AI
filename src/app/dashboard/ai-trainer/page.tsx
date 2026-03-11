@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from 'react';
+import { motion } from 'framer-motion';
 
 type Message = {
   id: string;
@@ -85,11 +86,33 @@ export default function AITrainerPage() {
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1, delayChildren: 0.1 }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.5, ease: "easeOut" as any }
+    }
+  };
+
   return (
-    <div className="flex h-[calc(100vh-80px)] -mx-4 md:-mx-8 overflow-hidden bg-background-dark/50">
+    <motion.div 
+      className="flex h-[calc(100vh-80px)] -mx-4 md:-mx-8 overflow-hidden bg-background-dark/50"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
       
       {/* PANEL 1: CONVERSATIONS LIST (Hidden on small screens, absolute/drawer on mobile maybe, here just hidden or block) */}
-      <div className="hidden lg:flex flex-col w-80 border-r border-surface-glass-border bg-background-dark/80 backdrop-blur-md flex-shrink-0">
+      <motion.div variants={itemVariants} className="hidden lg:flex flex-col w-80 border-r border-surface-glass-border bg-background-dark/80 backdrop-blur-md flex-shrink-0">
         <div className="p-5 border-b border-surface-glass-border">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-bold text-white">Conversations</h2>
@@ -137,10 +160,10 @@ export default function AITrainerPage() {
             New Chat
           </button>
         </div>
-      </div>
+      </motion.div>
 
       {/* PANEL 2: CHAT WINDOW */}
-      <div className="flex-1 flex flex-col bg-background-dark relative border-r border-surface-glass-border">
+      <motion.div variants={itemVariants} className="flex-1 flex flex-col bg-background-dark relative border-r border-surface-glass-border">
         
         {/* Background Glow */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
@@ -251,10 +274,10 @@ export default function AITrainerPage() {
             <span className="text-[10px] text-slate-500">FitNexa AI can make mistakes. Consider verifying important fitness advice.</span>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* PANEL 3: AI CONTEXT SIDEBAR (Hidden on small/medium screens) */}
-      <div className="hidden xl:flex flex-col w-80 bg-slate-900/50 backdrop-blur-md flex-shrink-0 overflow-y-auto z-10 custom-scrollbar">
+      <motion.div variants={itemVariants} className="hidden xl:flex flex-col w-80 bg-slate-900/50 backdrop-blur-md flex-shrink-0 overflow-y-auto z-10 custom-scrollbar">
         <div className="p-5 border-b border-surface-glass-border">
           <h2 className="text-lg font-bold text-white mb-1">Context Window</h2>
           <p className="text-xs text-slate-400">Session insights & tools</p>
@@ -333,7 +356,7 @@ export default function AITrainerPage() {
           </div>
 
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }

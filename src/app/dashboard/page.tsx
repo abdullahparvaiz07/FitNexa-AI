@@ -4,6 +4,7 @@ import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 export default function DashboardPage() {
   const { data: session, status } = useSession();
@@ -65,12 +66,34 @@ export default function DashboardPage() {
     return diffDays <= 7;
   }).length;
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1, delayChildren: 0.1 }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.5, ease: "easeOut" as any }
+    }
+  };
+
   return (
-    <div className="flex flex-col gap-6 lg:gap-8">
+    <motion.div 
+      className="flex flex-col gap-6 lg:gap-8"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
       
       {/* Top Quick Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
-        <div className="glass-panel p-5 rounded-2xl border border-surface-glass-border shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] flex items-center justify-between group hover:border-primary/30 transition-colors">
+        <motion.div variants={itemVariants} className="glass-panel p-5 rounded-2xl border border-surface-glass-border shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] flex items-center justify-between group hover:border-primary/30 transition-colors">
           <div className="flex flex-col">
             <span className="text-slate-400 text-sm mb-1 uppercase tracking-wider font-semibold">Calories Eaten</span>
             <div className="flex items-baseline gap-2">
@@ -81,9 +104,9 @@ export default function DashboardPage() {
           <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center border border-primary/20 group-hover:scale-110 transition-transform">
             <span className="material-symbols-outlined text-primary text-2xl">local_fire_department</span>
           </div>
-        </div>
+        </motion.div>
 
-        <div className="glass-panel p-5 rounded-2xl border border-surface-glass-border shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] flex items-center justify-between group hover:border-primary/30 transition-colors">
+        <motion.div variants={itemVariants} className="glass-panel p-5 rounded-2xl border border-surface-glass-border shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] flex items-center justify-between group hover:border-primary/30 transition-colors">
           <div className="flex flex-col">
             <span className="text-slate-400 text-sm mb-1 uppercase tracking-wider font-semibold">Workouts Done</span>
             <div className="flex items-baseline gap-2">
@@ -94,9 +117,9 @@ export default function DashboardPage() {
           <div className="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center border border-blue-500/20 group-hover:scale-110 transition-transform">
             <span className="material-symbols-outlined text-blue-400 text-2xl">fitness_center</span>
           </div>
-        </div>
+        </motion.div>
 
-        <div className="glass-panel p-5 rounded-2xl border border-surface-glass-border shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] flex items-center justify-between group hover:border-primary/30 transition-colors">
+        <motion.div variants={itemVariants} className="glass-panel p-5 rounded-2xl border border-surface-glass-border shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] flex items-center justify-between group hover:border-primary/30 transition-colors">
           <div className="flex flex-col">
             <span className="text-slate-400 text-sm mb-1 uppercase tracking-wider font-semibold">Current Streak</span>
             <div className="flex items-baseline gap-2">
@@ -107,9 +130,9 @@ export default function DashboardPage() {
           <div className="w-12 h-12 rounded-full bg-orange-500/10 flex items-center justify-center border border-orange-500/20 group-hover:scale-110 transition-transform">
             <span className="material-symbols-outlined text-orange-400 text-2xl">bolt</span>
           </div>
-        </div>
+        </motion.div>
 
-        <div className="glass-panel p-5 rounded-2xl border border-surface-glass-border shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] flex items-center justify-between group hover:border-primary/30 transition-colors relative overflow-hidden">
+        <motion.div variants={itemVariants} className="glass-panel p-5 rounded-2xl border border-surface-glass-border shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] flex items-center justify-between group hover:border-primary/30 transition-colors relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
           <div className="flex flex-col">
             <span className="text-slate-400 text-sm mb-1 uppercase tracking-wider font-semibold">AI Motivation Score</span>
@@ -120,7 +143,7 @@ export default function DashboardPage() {
           <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center neon-glow border border-primary/50">
             <span className="material-symbols-outlined text-primary text-2xl">auto_awesome</span>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
@@ -129,7 +152,7 @@ export default function DashboardPage() {
         <div className="lg:col-span-2 flex flex-col gap-6 lg:gap-8">
           
           {/* Today's AI Workout Plan */}
-          <div className="glass-panel p-6 rounded-3xl border border-surface-glass-border shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] relative overflow-hidden">
+          <motion.div variants={itemVariants} className="glass-panel p-6 rounded-3xl border border-surface-glass-border shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] relative overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[80px] pointer-events-none"></div>
             
             <div className="flex justify-between items-center mb-6 relative z-10">
@@ -192,10 +215,10 @@ export default function DashboardPage() {
                 </div>
               )}
             </div>
-          </div>
+          </motion.div>
 
           {/* AI Coach Mini Chat */}
-          <div className="glass-panel p-6 rounded-3xl border border-surface-glass-border shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] flex flex-col h-[350px]">
+          <motion.div variants={itemVariants} className="glass-panel p-6 rounded-3xl border border-surface-glass-border shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] flex flex-col h-[350px]">
             <div className="flex justify-between items-center pb-4 border-b border-surface-glass-border mb-4">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center border border-primary/50 relative">
@@ -233,13 +256,13 @@ export default function DashboardPage() {
                 </button>
               </Link>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* Right Column: Diet & Macros (1 col wide) */}
         <div className="flex flex-col gap-6 lg:gap-8">
           
-          <div className="glass-panel p-6 rounded-3xl border border-surface-glass-border shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] flex flex-col relative overflow-hidden">
+          <motion.div variants={itemVariants} className="glass-panel p-6 rounded-3xl border border-surface-glass-border shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] flex flex-col relative overflow-hidden">
             <div className="absolute top-0 right-0 w-32 h-32 bg-orange-500/10 rounded-full blur-[60px] pointer-events-none"></div>
             
             <div className="flex justify-between items-center mb-6">
@@ -302,9 +325,9 @@ export default function DashboardPage() {
                 <span className="material-symbols-outlined text-[20px]">add_circle</span> Log Meal
               </button>
             </Link>
-          </div>
+          </motion.div>
 
-          <div className="glass-panel p-6 rounded-3xl border border-surface-glass-border shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] bg-gradient-to-br from-[#111] to-[#1a1a1a]">
+          <motion.div variants={itemVariants} className="glass-panel p-6 rounded-3xl border border-surface-glass-border shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] bg-gradient-to-br from-[#111] to-[#1a1a1a]">
             <div className="flex items-center gap-3 mb-4">
               <span className="material-symbols-outlined text-primary text-2xl">accessibility_new</span>
               <h3 className="text-white font-bold text-lg">Posture Check</h3>
@@ -324,10 +347,10 @@ export default function DashboardPage() {
               </div>
               <span className="material-symbols-outlined text-slate-500 group-hover:text-primary transition-colors">arrow_forward</span>
             </div>
-          </div>
+          </motion.div>
 
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

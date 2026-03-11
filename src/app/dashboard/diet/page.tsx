@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 
 type DietEntry = {
   id: string;
@@ -64,10 +65,32 @@ export default function DietPlannerPage() {
     } catch (e) { console.error(e); }
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1, delayChildren: 0.1 }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.5, ease: "easeOut" as any }
+    }
+  };
+
   return (
-    <div className="flex flex-col gap-6 lg:gap-8 max-w-6xl mx-auto w-full">
+    <motion.div 
+      className="flex flex-col gap-6 lg:gap-8 max-w-6xl mx-auto w-full"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
       {/* Header */}
-      <div className="flex flex-wrap items-center justify-between gap-4">
+      <motion.div variants={itemVariants} className="flex flex-wrap items-center justify-between gap-4">
         <div>
           <h1 className="text-3xl md:text-4xl font-black leading-tight tracking-tight text-white mb-1">AI Diet Planner 🥗</h1>
           <p className="text-primary text-base font-medium">Today — {new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}</p>
@@ -79,10 +102,10 @@ export default function DietPlannerPage() {
           <span className="material-symbols-outlined text-[20px]">add</span>
           Log a Meal
         </button>
-      </div>
+      </motion.div>
 
       {/* Macro Stats */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <motion.div variants={itemVariants} className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {[
           { label: 'Calories', current: totalCalories, goal: CALORIE_GOAL, unit: 'kcal', color: 'bg-primary', glow: '#39FF14' },
           { label: 'Protein', current: totalProtein, goal: PROTEIN_GOAL, unit: 'g', color: 'bg-blue-500', glow: '#3b82f6' },
@@ -97,10 +120,10 @@ export default function DietPlannerPage() {
             </div>
           </div>
         ))}
-      </div>
+      </motion.div>
 
       {/* Today's Meals Log */}
-      <div className="glass-panel rounded-xl p-6 border border-surface-glass-border shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]">
+      <motion.div variants={itemVariants} className="glass-panel rounded-xl p-6 border border-surface-glass-border shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]">
         <h2 className="text-xl font-bold text-white mb-4">Today's Meals</h2>
         {isLoading ? (
           <p className="text-slate-400 text-sm">Loading...</p>
@@ -122,10 +145,10 @@ export default function DietPlannerPage() {
             ))}
           </div>
         )}
-      </div>
+      </motion.div>
 
       {/* Macro donut + summary */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <motion.div variants={itemVariants} className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="glass-panel rounded-xl p-6 border border-surface-glass-border shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]">
           <h3 className="text-white font-bold text-lg mb-6">Macro Breakdown</h3>
           <div className="flex flex-col sm:flex-row items-center gap-8">
@@ -181,7 +204,7 @@ export default function DietPlannerPage() {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Log Meal Modal */}
       {showModal && (
@@ -223,6 +246,6 @@ export default function DietPlannerPage() {
           </div>
         </div>
       )}
-    </div>
+    </motion.div>
   );
 }
