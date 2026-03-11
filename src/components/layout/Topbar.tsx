@@ -8,11 +8,19 @@ export default function Topbar() {
   const firstName = session?.user?.name ? session.user.name.split(" ")[0] : "there";
 
   return (
-    <header className="h-20 border-b border-surface-glass-border flex items-center justify-between px-8 shrink-0 glass-panel z-20 transition-all">
-      <div className="flex flex-col">
-        <h2 className="text-2xl font-bold text-white tracking-tight">
-          Welcome back, <span className="text-primary">{firstName}</span>! <span className="text-2xl ml-1">💪</span>
-        </h2>
+    <header className="h-20 border-b border-surface-glass-border flex items-center justify-between px-4 md:px-8 shrink-0 glass-panel z-20 transition-all">
+      <div className="flex items-center gap-3">
+        <button 
+          onClick={() => window.dispatchEvent(new Event('toggleSidebar'))}
+          className="md:hidden w-10 h-10 rounded-lg bg-background-dark border border-surface-glass-border flex items-center justify-center hover:bg-surface-glass transition-colors"
+        >
+          <span className="material-symbols-outlined text-slate-300">menu</span>
+        </button>
+        <div className="flex flex-col">
+          <h2 className="text-xl md:text-2xl font-bold text-white tracking-tight">
+            Welcome back, <span className="text-primary">{firstName}</span>! <span className="text-xl md:text-2xl ml-1">💪</span>
+          </h2>
+        </div>
       </div>
       <div className="flex items-center gap-6 hidden sm:flex">
         <div className="relative group hidden md:block">

@@ -2,11 +2,19 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useSession } from 'next-auth/react';
+import { useState, useEffect } from 'react';
 import clsx from 'clsx';
 
 export default function Sidebar() {
   const pathname = usePathname();
   const { data: session } = useSession();
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    const handleToggle = () => setIsOpen(prev => !prev);
+    window.addEventListener('toggleSidebar', handleToggle);
+    return () => window.removeEventListener('toggleSidebar', handleToggle);
+  }, []);
 
   const navItems = [
     { name: 'Dashboard', href: '/dashboard', icon: 'dashboard' },
@@ -18,15 +26,30 @@ export default function Sidebar() {
   ];
 
   return (
-    <aside className="w-[240px] flex flex-col h-screen border-r border-surface-glass-border bg-background-dark shrink-0 overflow-y-auto relative z-20">
-      <div className="p-6 flex items-center gap-3">
+    <>
+      {/* Mobile Backdrop overlay */}
+      {isOpen && (
+        <div 
+          className="fixed inset-0 bg-black/60 z-40 md:hidden backdrop-blur-sm transition-opacity"
+          onClick={() => setIsOpen(false)}
+        />
+      )}
+      
+      <aside className={clsx(
+        "fixed md:static inset-y-0 left-0 z-50 w-[240px] flex flex-col h-screen border-r border-surface-glass-border bg-background-dark shrink-0 overflow-y-auto transition-transform duration-300 ease-in-out",
+        isOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
+      )}>
+        <div className="p-6 flex items-center justify-between gap-3">
         <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center neon-border">
           <span className="material-symbols-outlined text-primary">bolt</span>
         </div>
-        <Link href="/">
-          <h1 className="text-xl font-bold tracking-tight text-white cursor-pointer">FitNexa <span className="neon-text">AI</span></h1>
-        </Link>
-      </div>
+          <Link href="/" onClick={() => setIsOpen(false)}>
+            <h1 className="text-xl font-bold tracking-tight text-white cursor-pointer">FitNexa <span className="neon-text">AI</span></h1>
+          </Link>
+          <button className="md:hidden text-slate-400 hover:text-white" onClick={() => setIsOpen(false)}>
+            <span className="material-symbols-outlined">close</span>
+          </button>
+        </div>
 
       <div className="px-6 pb-6 pt-2">
         <div className="flex items-center gap-3">
@@ -42,7 +65,12 @@ export default function Sidebar() {
         {navItems.map((item) => {
           const isActive = pathname === item.href;
           return (
-            <Link key={item.name} href={item.href} className={clsx("flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors group relative", isActive ? "bg-primary/10 text-primary" : "text-slate-400 hover:text-white hover:bg-surface-glass")}>
+            <Link 
+              key={item.name} 
+              href={item.href} 
+              onClick={() => setIsOpen(false)}
+              className={clsx("flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors group relative", isActive ? "bg-primary/10 text-primary" : "text-slate-400 hover:text-white hover:bg-surface-glass")}
+            >
               {isActive && <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-primary rounded-r-full shadow-[0_0_8px_rgba(57,255,20,0.8)]"></div>}
               <span className={clsx("material-symbols-outlined text-[20px] transition-colors", !isActive && "group-hover:text-primary")}>{item.icon}</span>
               <span className="text-sm font-medium">{item.name}</span>
@@ -52,7 +80,7 @@ export default function Sidebar() {
         <div className="pt-4 pb-2">
           <div className="h-px w-full bg-surface-glass-border"></div>
         </div>
-        <Link href="/dashboard/settings" className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-surface-glass transition-colors group">
+        <Link href="/dashboard/settings" onClick={() => setIsOpen(false)} className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-surface-glass transition-colors group">
           <span className="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors">settings</span>
           <span className="text-sm font-medium">Settings</span>
         </Link>
@@ -70,6 +98,7 @@ export default function Sidebar() {
           </button>
         </div>
       </div>
-    </aside>
+      </aside>
+    </>
   );
 }
