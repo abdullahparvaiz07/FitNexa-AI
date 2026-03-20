@@ -14,6 +14,42 @@ export default function DashboardPage() {
   const [diets, setDiets] = useState<any[]>([]);
   const [isLoadingData, setIsLoadingData] = useState(true);
 
+  // AI Chat States
+  const [chatHistory, setChatHistory] = useState<{role: string, content: string}[]>([
+    { role: 'model', content: "Good morning! I'm Coach Nexa. How can I help you crush your fitness goals today?" }
+  ]);
+  const [chatInput, setChatInput] = useState("");
+  const [isChatLoading, setIsChatLoading] = useState(false);
+
+  const handleSendMessage = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!chatInput.trim() || isChatLoading) return;
+
+    const userMsg = chatInput.trim();
+    setChatInput("");
+    setChatHistory(prev => [...prev, { role: "user", content: userMsg }]);
+    setIsChatLoading(true);
+
+    try {
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt: userMsg, history: chatHistory })
+      });
+      
+      const data = await res.json();
+      if (data.text) {
+        setChatHistory(prev => [...prev, { role: "model", content: data.text }]);
+      } else {
+        setChatHistory(prev => [...prev, { role: "model", content: "Sorry, I had trouble processing that." }]);
+      }
+    } catch (error) {
+      setChatHistory(prev => [...prev, { role: "model", content: "Network error. Please try again." }]);
+    } finally {
+      setIsChatLoading(false);
+    }
+  };
+
   useEffect(() => {
     if (status === 'unauthenticated') {
       router.push('/login');
@@ -226,8 +262,8 @@ export default function DashboardPage() {
                   <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-primary rounded-full border-2 border-[#151515]"></div>
                 </div>
                 <div>
-                  <h3 className="text-white font-bold">AI Coach Nexus</h3>
-                  <p className="text-primary text-xs font-semibold">Online • Ready to assist</p>
+                  <h3 className="text-white font-bold">FitNexa AI Coach</h3>
+                  <p className="text-primary text-xs font-semibold">Online • Powered by Gemini</p>
                 </div>
               </div>
               <Link href="/dashboard/ai-trainer">
@@ -238,24 +274,53 @@ export default function DashboardPage() {
             </div>
             
             <div className="flex-1 overflow-y-auto pr-2 flex flex-col gap-4 mb-4 custom-scrollbar">
-              <div className="flex gap-3">
-                <div className="w-8 h-8 rounded-full bg-primary/20 flex-shrink-0 flex items-center justify-center mt-1">
-                  <span className="material-symbols-outlined text-primary text-sm">robot_2</span>
+              {chatHistory.map((msg, idx) => (
+                <div key={idx} className={`flex gap-3 ${msg.role === 'user' ? 'flex-row-reverse' : ''}`}>
+                  <div className={`w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center mt-1 ${msg.role === 'user' ? 'bg-blue-500/20' : 'bg-primary/20'}`}>
+                    <span className={`material-symbols-outlined text-sm ${msg.role === 'user' ? 'text-blue-400' : 'text-primary'}`}>
+                      {msg.role === 'user' ? 'person' : 'robot_2'}
+                    </span>
+                  </div>
+                  <div className={`border rounded-2xl p-3 text-sm text-slate-200 max-w-[85%] ${
+                    msg.role === 'user' 
+                      ? 'bg-blue-600/20 border-blue-500/30 rounded-tr-sm' 
+                      : 'bg-surface-glass border-slate-700/50 rounded-tl-sm'
+                  }`}>
+                    {msg.content}
+                  </div>
                 </div>
-                <div className="bg-surface-glass border border-slate-700/50 rounded-2xl rounded-tl-sm p-3 text-sm text-slate-200">
-                  Good morning! Based on your recent logs, I've adjusted your plan for today. Let me know if you are ready to start.
+              ))}
+              {isChatLoading && (
+                <div className="flex gap-3">
+                  <div className="w-8 h-8 rounded-full bg-primary/20 flex-shrink-0 flex items-center justify-center mt-1">
+                    <span className="material-symbols-outlined text-primary text-sm animate-pulse">robot_2</span>
+                  </div>
+                  <div className="bg-surface-glass border border-slate-700/50 rounded-2xl rounded-tl-sm p-3 text-sm text-slate-400 flex items-center gap-1">
+                    <span className="w-2 h-2 bg-primary rounded-full animate-bounce"></span>
+                    <span className="w-2 h-2 bg-primary rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></span>
+                    <span className="w-2 h-2 bg-primary rounded-full animate-bounce" style={{ animationDelay: '0.4s' }}></span>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
 
-            <div className="relative mt-auto">
-              <input readOnly type="text" placeholder="Go to full chat to message AI Coach..." className="w-full bg-background-dark border border-surface-glass-border text-white text-sm rounded-full pl-4 pr-12 py-3 placeholder:text-slate-500 opacity-70 cursor-not-allowed" />
-              <Link href="/dashboard/ai-trainer" className="absolute right-2 top-1/2 -translate-y-1/2">
-                <button className="w-8 h-8 bg-primary hover:bg-[#32e612] rounded-full flex items-center justify-center transition-colors">
-                  <span className="material-symbols-outlined text-black text-[18px]">open_in_new</span>
-                </button>
-              </Link>
-            </div>
+            <form onSubmit={handleSendMessage} className="relative mt-auto flex items-center gap-2">
+              <input 
+                type="text" 
+                value={chatInput}
+                onChange={(e) => setChatInput(e.target.value)}
+                placeholder="Ask me anything about fitness..." 
+                disabled={isChatLoading}
+                className="w-full bg-background-dark border border-surface-glass-border text-white text-sm rounded-full pl-4 pr-12 py-3 placeholder:text-slate-500 focus:outline-none focus:border-primary/50 transition-colors disabled:opacity-50" 
+              />
+              <button 
+                type="submit"
+                disabled={isChatLoading || !chatInput.trim()}
+                className="absolute right-2 w-8 h-8 bg-primary hover:bg-[#32e612] disabled:hover:bg-primary disabled:opacity-50 rounded-full flex items-center justify-center transition-colors shadow-[0_0_10px_rgba(57,255,20,0.3)]"
+              >
+                <span className="material-symbols-outlined text-black text-[18px]">send</span>
+              </button>
+            </form>
           </motion.div>
         </div>
 

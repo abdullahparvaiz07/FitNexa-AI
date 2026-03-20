@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@ai-sdk/openai": "^0.0.50",
+    "@google/generative-ai": "^0.24.1",
     "@mediapipe/pose": "^0.5.1675469404",
     "@prisma/client": "^6.19.2",
     "@tailwindcss/container-queries": "^0.1.1",
