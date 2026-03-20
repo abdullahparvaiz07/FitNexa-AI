@@ -9,7 +9,6 @@
     "lint": "eslint",
     "postinstall": "prisma generate"
   },
-  
   "dependencies": {
     "@ai-sdk/openai": "^0.0.50",
     "@mediapipe/pose": "^0.5.1675469404",
@@ -22,6 +21,7 @@
     "ai": "^3.3.0",
     "bcryptjs": "^3.0.3",
     "clsx": "^2.1.1",
+    "firebase": "^12.11.0",
     "framer-motion": "^12.35.0",
     "lucide-react": "^0.577.0",
     "next": "16.1.6",
